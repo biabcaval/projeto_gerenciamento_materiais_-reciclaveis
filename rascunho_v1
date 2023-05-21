@@ -1,0 +1,66 @@
+#pragma execution_character_set("utf-8")
+
+#include<stdio.h>
+#include<stdlib.h>
+
+#include<string.h>
+
+//Structs
+typedef struct{
+char nome[30];
+char ende_forne[50];
+} fornecedor;
+
+typedef struct{
+float quanti;
+char data[10];
+} material;
+
+typedef struct{
+int id;
+char ende_pc[10];
+} ponto_coleta;
+
+//Funções
+int MenuFornecedor(char escolha);
+int MenuMaterial(char escolha);
+int MenuPontoColeta(char escolha);
+void Relatorios(char escolha);
+
+int main(void) {
+  
+//Menu Principal
+
+char op_menu_p;
+char op_aba;
+printf("---Bem vindo(a) ao Sistema Ecowise---\n\n");
+printf("*Menu Principal*\n\n");
+printf("Selecione a aba que você quer acessar:\n\n");
+printf("(a)Resíduos\n(b)Fornecedores\n(c)Pontos de Coleta\n(d)Relatórios\n");
+
+switch(op_menu_p){
+  case 'a': // Resíduos
+    printf("(a)Cadastrar material\n(b)Atualizar material");
+    scanf("%c",&op_aba);
+    //chamar função
+    break;
+  
+  case 'b': //Fornecedores
+    printf("(a)Cadastrar Fornecedor\n(b)Atualizar Informações\n");
+    scanf("%c",&op_aba);
+    //chamar função
+  break;
+
+  case 'c': // Pontos de Coleta
+    printf("(a)Cadastrar Ponto de Coleta\n(b)Atualizar Informações\n");
+    scanf("%c",&op_aba);
+    //chamar função
+  break;
+
+  case 'd': //Relatórios
+    printf("(a)Estatísticas\n(b)Lista de Pontos de Coleta\n(c)Lista de Pontos de Coleta\n");
+    //chamar função
+  break;
+}
+  return 0;
+}
