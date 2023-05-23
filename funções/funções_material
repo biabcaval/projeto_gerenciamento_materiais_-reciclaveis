@@ -35,17 +35,16 @@ void MenuMaterial(int id, float quant, data *data_registro)
         case 'a':
             
             CadastroMaterial();
-            
-            printf("\nDeseja realizar outra operação em Materiais? (s) sim (n) não: ");
-            scanf("%c", &opcao);
 
               if (opcao == 's')
               {
                 MenuMaterial(int id, float quant, data *data_registro);
+                i++
               };
+              
               if (opcao == 'n')
               {
-                MenuPontoColeta(int id, float quant, data *data_registro);
+                printf("Ações Finalizadas");
               };
               else
               {
@@ -64,10 +63,11 @@ void MenuMaterial(int id, float quant, data *data_registro)
               if (opcao == 's')
               {
                 MenuMaterial(int id, float quant, data *data_registro);
+                 i++
               };
               if (opcao == 'n')
               {
-                MenuPontoColeta(int id, float quant, data *data_registro);
+                printf("Ações Finalizadas");
               };
               else
               {
