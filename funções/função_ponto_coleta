@@ -1,0 +1,62 @@
+/*void CadastroPontoColeta(ponto_coleta *lista_pontos, int i){
+    printf("Insira o id do ponto de coleta: ");
+    scanf("%d", &lista_pontos[i].id);
+
+    printf("insira o endereço do ponto de coleta: ");
+    scanf("%s", &lista_pontos[i].ende_pc);
+
+}
+
+void AtualizaPontoColeta(ponto_coleta *lista_pontos, int i, int id){
+    for(int j = 0; j < i + 1; j++){
+        if (lista_pontos[j].id == id){
+            printf("Insira o novo endereço do ponto de coleta: ");
+            scanf("%s", lista_pontos[j].ende_pc);
+        }
+    }
+    printf("Informação atualizada com sucesso!");
+}
+*/
+
+/*
+void MenuPontoColeta(ponto_coleta *lista_pontos, char opcao, int i){       //função com as ações referentes a pontos de coleta.
+
+    switch(opcao){
+        case 'a':
+              printf("Insira o id do ponto de coleta: ");
+              scanf("%d", &lista_pontos[i].id);
+
+              printf("insira o endereço do ponto de coleta: ");
+              scanf("%s", &lista_pontos[i].ende_pc);
+              printf("\nCadastro do ponto de coleta feito com sucesso!");
+              
+              printf("\nDeseja realizar outra operação na aba de pontos de coleta? (s)sim (n)não");
+              scanf("%c", &opcao);
+
+              if (opcao == 's')
+                MenuPontoColeta(lista_pontos, opcao, i);
+              break;
+        
+        case 'b':
+            int id; 
+
+            printf("Insira o id do ponto de coleta a ser atualizado: ");
+            scanf("%d", &id);
+
+            for(int j = 0; j < i + 1; j++){
+                if (lista_pontos[j].id == id){
+                printf("Insira o novo endereço do ponto de coleta: ");
+                scanf("%s", lista_pontos[j].ende_pc);
+                }
+            }
+            printf("Informação atualizada com sucesso!");
+
+             printf("\nDeseja realizar outra operação na aba de pontos de coleta? (s)sim (n)não");
+              scanf("%c", &opcao);
+
+              if (opcao == 's')
+                MenuPontoColeta(lista_pontos, opcao, i);
+            break;
+    }
+}
+*/
