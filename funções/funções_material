@@ -1,0 +1,78 @@
+void CadastroMaterial(int id, float quant, data *data_registro)
+{
+    
+   printf("\n Digite o codigo do material que será cadastrado: ");
+   scanf("%d", &material.id);
+
+   printf("\n Digite a quantidade de material recebido (em kg): ");
+   scanf("%f",&material.quant);
+   
+   printf("\n Digite a data em que a c
+   oleta foi feita (DD/MM/AAAA): ");
+   scanf("%d",&material.data_registro);
+
+};
+
+void AtualizaMaterial(int id, float quant, data *data_registro)
+{
+    for(int j = 0; j < j + 1; j++)
+    {
+        if (material[j].id == id)
+        {
+            printf("Digite a nova quantidade do material: ");
+            scanf("%f", material[j].quant);
+            
+            printf("Digite a data da atualização: ");
+            scanf("%d", material[j].data_registro);
+        }
+    }
+    printf("Informações atualizadas com sucesso!");
+}
+
+void MenuMaterial(int id, float quant, data *data_registro)
+{     
+    switch(opcao){
+        case 'a':
+            
+            CadastroMaterial();
+            
+            printf("\nDeseja realizar outra operação em Materiais? (s) sim (n) não: ");
+            scanf("%c", &opcao);
+
+              if (opcao == 's')
+              {
+                MenuMaterial(int id, float quant, data *data_registro);
+              };
+              if (opcao == 'n')
+              {
+                MenuPontoColeta(int id, float quant, data *data_registro);
+              };
+              else
+              {
+                printf("opção invalida!");
+                break;
+              }
+              
+        
+        case 'b':
+            
+            AtualizaMaterial();
+
+           printf("\nDeseja realizar outra operação em Materiais? (s) sim (n) não: ");
+            scanf("%c", &opcao);
+
+              if (opcao == 's')
+              {
+                MenuMaterial(int id, float quant, data *data_registro);
+              };
+              if (opcao == 'n')
+              {
+                MenuPontoColeta(int id, float quant, data *data_registro);
+              };
+              else
+              {
+                printf("opção invalida!");
+                break;
+              }
+    }
+}
