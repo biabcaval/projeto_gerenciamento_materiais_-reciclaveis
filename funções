@@ -28,7 +28,13 @@ void MenuPontoColeta(ponto_coleta *lista_pontos, char opcao, int i){       //fun
 
               printf("insira o endereço do ponto de coleta: ");
               scanf("%s", &lista_pontos[i].ende_pc);
-              printf("\n cadastro do ponto de coleta feito com sucesso!");
+              printf("\nCadastro do ponto de coleta feito com sucesso!");
+              
+              printf("\nDeseja realizar outra operação na aba de pontos de coleta? (s)sim (n)não");
+              scanf("%c", &opcao);
+
+              if (opcao == 's')
+                MenuPontoColeta(lista_pontos, opcao, i);
               break;
         
         case 'b':
@@ -44,6 +50,12 @@ void MenuPontoColeta(ponto_coleta *lista_pontos, char opcao, int i){       //fun
                 }
             }
             printf("Informação atualizada com sucesso!");
+
+             printf("\nDeseja realizar outra operação na aba de pontos de coleta? (s)sim (n)não");
+              scanf("%c", &opcao);
+
+              if (opcao == 's')
+                MenuPontoColeta(lista_pontos, opcao, i);
             break;
     }
 }
