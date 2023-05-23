@@ -1,22 +1,41 @@
-void MenuFornecedor(char escolha, int i){
-  fornecedor Fornecedores[30];
+void CadastroFornecedor(fornecedor *lista_fornecedores,int i){
+    printf("Insira o nome do fornecedor: ");
+    scanf("%d", &lista_fornecedores[i].id);
 
-  switch(escolha){
+    printf("Insira o endereço do ponto de coleta: ");
+    scanf("%s", &lista_fornecedores[i].ende_forne);
+}
+
+void AtualizaFornecedor(fornecedor *lista_fornecedores, int i, int id){
+    for(int j=0; j< i+1;j++){
+        if(lista_fornecedores[j].id == id){
+            printf("Insira o novo endereço do fornecedor: ");
+            scanf("%s",lista_fornecedores[i].ende_forne);
+        }
+    }
+    printf("Informação atualizada com sucesso!");
+
+  
+}
+
+void MenuFornecedor(fornecedor *lista_fornecedores, char opcao , int i){
+
+  switch(opcao){
     case 'a':
-    printf("Digite o nome do fornecedor: \n");
-        scanf("%s",Fornecedores[i].nome);
-    printf("Digite o endereço do fornecedor: \n");
-        scanf("%s",Fornecedores[i].ende_forne);
+    CadastroFornecedor(fornecedor *lista_fornecedores, int i, int id);
     break;
 
     case 'b':
-    printf("Atualize o nome do fornecedor:\n");
-      scanf("%s",Fornecedores[i].nome);
-    printf("Atualize o endereço do fornecedor:\n");
-        scanf("%s",Fornecedores[i].ende_forne);
+    AtualizaFornecedor(fornecedor *lista_fornecedores, int i);
     break;
   }
 
-  printf("%s\n",Fornecedores[i].nome);
-  printf("%s",Fornecedores[i].ende_forne);
+    //Possibilidade de realizar alguma operação novamente
+    printf("\nDeseja realizar outra operação na aba de fornecedores? (s) sim (n)não\n");
+    scanf("%c",&opcao);
+
+    if (opcao == 's')
+        MenuPontoColeta(lista_fornecedores, opcao, i);
+    break;
+
 }
