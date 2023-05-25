@@ -1,0 +1,160 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+//Structs
+typedef struct
+{
+    int dia;
+    int mes;
+    int ano;
+
+}data;
+
+typedef struct
+{
+    int id;
+    float quant;
+    data data_registro;
+    
+}material;
+
+
+void CadastroMaterial(material *material)
+{
+    static int i;
+    
+    printf("\n Digite o codigo do material que será cadastrado: ");
+    scanf("%d", &material[i].id);
+    
+    printf("\n Digite a quantidade de material recebido (em kg): ");
+    scanf("%f",&material[i].quant);
+    
+    printf("\n Digite a data em que a coleta foi feita (DD/MM/AAAA): ");
+    scanf("%d",&material[i].data_registro);
+    
+    i++;
+
+}
+
+void AtualizaMaterial(material *material, int id)
+{
+    for(int j = 0; j < j + 1; j++)
+    {
+        if (material[j].id == id)
+        {
+            printf("Digite a nova quantidade do material: ");
+            scanf("%f", &material[j].quant);
+            
+            printf("Digite a data da atualização: ");
+            scanf("%d", &material[j].data_registro);
+        }
+    }
+    printf("Informações atualizadas com sucesso!");
+}
+
+void MenuMaterial(char opcao)
+{    
+    static material *material;
+    
+    switch(opcao){
+        case 'a':
+            
+            CadastroMaterial(material);
+
+              if (opcao == 's')
+              {
+                MenuMaterial(opcao);
+              }
+              
+              else if (opcao == 'n')
+              {
+                printf("Ações Finalizadas");
+              }
+              
+              else
+              {
+                printf("opção invalida!");
+                break;
+              }
+              
+        
+        case 'b':
+            
+            static int id;
+            printf("\n Digite o id do material que você deseja atualizar: ");
+            scanf("%d", &id);
+            
+            AtualizaMaterial(material, id);
+
+           printf("\nDeseja realizar outra operação em Materiais? (s) sim (n) não: ");
+            scanf(" %c", &opcao);
+
+              if (opcao == 's')
+              {
+                MenuMaterial(opcao);
+              }
+              else if (opcao == 'n')
+              {
+                printf("Ações Finalizadas");
+              }
+              else
+              {
+                printf("opção invalida!");
+                break;
+              }
+    }
+}
+
+
+
+int main(void) {
+  
+ //criação de variaveis
+material material[10];  
+char resp;
+char op_menu_p;
+char op_aba;  
+  
+  
+//Menu Principal
+//do{
+printf("---Bem vindo(a) ao Sistema Ecowise---\n\n");
+printf("*Menu Principal*\n\n");
+printf("Selecione a aba que você quer acessar:\n\n");
+printf("(a)Resíduos\n(b)Fornecedores\n(c)Pontos de Coleta\n(d)Relatórios\n");
+scanf(" %c", &op_menu_p);
+
+switch(op_menu_p)
+{
+  case 'a': //Materiais
+        printf("(a)Cadastrar material\n(b)Atualizar material\n");
+        scanf(" %c",&op_aba);
+        MenuMaterial(op_aba);
+  break;
+  
+  case 'b': //Fornecedores
+    printf("(a)Cadastrar Fornecedor\n(b)Atualizar Informações\n");
+    scanf(" %c",&op_aba);
+    //chamar função
+  break;
+
+  case 'c': // Pontos de Coleta
+    printf("(a)Cadastrar Ponto de Coleta\n(b)Atualizar Informações\n");
+    scanf(" %c",&op_aba);
+    //chamar função
+  break;
+
+  case 'd': //Relatórios
+    printf("(a)Estatísticas\n(b)Lista de Pontos de Coleta\n(c)Lista de Pontos de Coleta\n");
+    //chamar função
+  break;
+}
+/*
+printf("Deseja Continuar? (s) sim (n) não \n");
+    scanf("%c",&resp);
+}while(resp = 's');
+*/
+
+  return 0;
+}
