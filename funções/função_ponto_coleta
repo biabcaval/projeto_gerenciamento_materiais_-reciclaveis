@@ -6,6 +6,8 @@ void CadastroPontoColeta(ponto_coleta *lista_pontos, int i){
 
     printf("insira o endereço do ponto de coleta: ");
     scanf("%s", &lista_pontos[i].ende_pc);
+    
+    i+=1;
 
 }
 
@@ -22,17 +24,22 @@ void AtualizaPontoColeta(ponto_coleta *lista_pontos, int i, int id){
 
 
 
-void MenuPontoColeta(ponto_coleta *lista_pontos, char opcao, int i){       //função com as ações referentes a pontos de coleta.
+void MenuPontoColeta(ponto_coleta *lista_pontos, char op_aba, int i, char resp){       //função com as ações referentes a pontos de coleta.
 
-    switch(opcao){
+        
+    switch(op_aba){
+
+        
         case 'a':
               CadastroPontoColeta(lista_pontos, i);
               
               printf("\nDeseja realizar outra operação na aba de pontos de coleta? (s)sim (n)não");
-              scanf("%c", &opcao);
+              scanf(" %c", &resp);
 
-              if (opcao == 's')
-                MenuPontoColeta(lista_pontos, opcao, i);
+              if (resp == 's')
+                printf("(a)Cadastrar Ponto de Coleta\n(b)Atualizar Informações\n");
+                scanf(" %c", &op_aba);
+                MenuPontoColeta(lista_pontos, op_aba, i, resp);
               break;
         
         case 'b':
@@ -41,21 +48,12 @@ void MenuPontoColeta(ponto_coleta *lista_pontos, char opcao, int i){       //fun
             AtualizaPontoColeta(lista_pontos, i,id);
 
             printf("\nDeseja realizar outra operação na aba de pontos de coleta? (s)sim (n)não");
-            scanf("%c", &opcao);
+            scanf(" %c", &resp);
 
-              if (opcao == 's')
-                MenuPontoColeta(lista_pontos, opcao, i);
+              if (resp == 's'){
+                printf("(a)Cadastrar Ponto de Coleta\n(b)Atualizar Informações\n");
+                scanf(" %c", &op_aba);
+                MenuPontoColeta(lista_pontos, op_aba, i, resp);}
             break;
     }
 }
-
-// função que gera id para o ponto de coleta
-int id_coleta = 02000;
-void cria_id_pontocoleta(ponto_coleta *lista_pontos, int i){
-    id_coleta +=1;
-
-    lista_pontos[i].id = id_coleta;
-
-}
-
-
