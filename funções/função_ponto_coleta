@@ -49,4 +49,13 @@ void MenuPontoColeta(ponto_coleta *lista_pontos, char opcao, int i){       //fun
     }
 }
 
+// função que gera id para o ponto de coleta
+int id_coleta = 02000;
+void cria_id_pontocoleta(ponto_coleta *lista_pontos, int i){
+    id_coleta +=1;
+
+    lista_pontos[i].id = id_coleta;
+
+}
+
 
