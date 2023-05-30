@@ -1,8 +1,6 @@
-#pragma execution_character_set("utf-8")
-
 #include<stdio.h>
 #include<stdlib.h>
-#include<locale.h> //necessÃ¡rio para usar setlocale
+#include<locale.h> //necessário para usar setlocale
 #include<string.h>
 
 //Structs
@@ -12,23 +10,23 @@ char ende_forne[50];
 } fornecedor;
 
 
-//FunÃ§Ãµes
+//Funções
 void CadastroFornecedor(fornecedor *lista_fornecedores,int i){
     printf("Insira o nome do fornecedor: ");
     scanf(" %s", lista_fornecedores[i].nome);
 
-    printf("Insira o endereÃ§o do ponto de coleta: ");
+    printf("Insira o endereço do ponto de coleta: ");
     scanf(" %s", lista_fornecedores[i].ende_forne);
 }
 
 /*void AtualizaFornecedor(fornecedor *lista_fornecedores, int i, int id){
     for(int j=0; j< i+1;j++){
         if(lista_fornecedores[j].id == id){
-            printf("Insira o novo endereÃ§o do fornecedor: ");
+            printf("Insira o novo endereço do fornecedor: ");
             scanf("%s",lista_fornecedores[i].ende_forne);
         }
     }
-    printf("InformaÃ§Ã£o atualizada com sucesso!");
+    printf("Informação atualizada com sucesso!");
 
   
 }*/
@@ -45,8 +43,8 @@ void MenuFornecedor(fornecedor *lista_fornecedores, char opcao , int i){
     break;
   }*/
 
-    //Possibilidade de realizar alguma operaÃ§Ã£o novamente
-    printf("\nDeseja realizar outra operaÃ§Ã£o na aba de fornecedores? (s) sim (n)nÃ£o\n");
+    //Possibilidade de realizar alguma operação novamente
+    printf("\nDeseja realizar outra operação na aba de fornecedores? (s) sim (n)não\n");
     scanf("%c",&opcao);  
 
 }
@@ -62,11 +60,11 @@ char resp_forne = 's';
 char op_menu_p;
 char op_aba;
 
-
+do{
 printf("---Bem vindo(a) ao Sistema Ecowise---\n\n");
 printf("*Menu Principal*\n\n");
-printf("Selecione a aba que vocÃª quer acessar:\n\n");
-printf("(a)ResÃ­duos\n(b)Fornecedores\n(c)Pontos de Coleta\n(d)RelatÃ³rios\n");
+printf("Selecione a aba que você quer acessar:\n\n");
+printf("(a)Resíduos\n(b)Fornecedores\n(c)Pontos de Coleta\n(d)Relatórios\n");
 
   scanf(" %c",&op_menu_p);
 
@@ -74,12 +72,12 @@ switch(op_menu_p){
   case 'a': // Materiais
     printf("(a)Cadastrar material\n(b)Atualizar material\n");
     scanf(" %c",&op_aba);
-    //chamar funÃ§Ã£o
+    //chamar função
     break;
   
   case 'b': //Fornecedores
     
-    printf("(a)Cadastrar Fornecedor\n(b)Atualizar InformaÃ§Ãµes\n");
+    printf("(a)Cadastrar Fornecedor\n(b)Atualizar Informações\n");
     scanf(" %c",&op_aba);
     MenuFornecedor(lista_fornecedores, op_aba, i);
   /*do {  
@@ -87,25 +85,28 @@ switch(op_menu_p){
   
 //} while (resp_forne == 's');
 
-    printf("Deseja fazer outra operaÃ§Ã£o no Menu Fornecedores?\n");
-  scanf(" %c", &resp_forne);  // LÃª o caractere dentro do loop
+    printf("Deseja fazer outra operação no Menu Fornecedores?\n");
+  scanf(" %c", &resp_forne);  // Lê o caractere dentro do loop
   i++;*/
-    //chamar funÃ§Ã£o
+    //chamar função
   break;
 
   case 'c': // Pontos de Coleta
-    printf("(a)Cadastrar Ponto de Coleta\n(b)Atualizar InformaÃ§Ãµes\n");
+    printf("(a)Cadastrar Ponto de Coleta\n(b)Atualizar Informações\n");
     scanf(" %c",&op_aba);
-    //chamar funÃ§Ã£o
+    //chamar função
   break;
 
-  case 'd': //RelatÃ³rios
-    printf("(a)EstatÃ­sticas\n(b)Lista de Pontos de Coleta\n(c)Lista de Fornecedores\n");
-    //chamar funÃ§Ã£o
+  case 'd': //Relatórios
+    printf("(a)Estatísticas\n(b)Lista de Pontos de Coleta\n(c)Lista de Fornecedores\n");
+    //chamar função
   break;
 }
-    printf("Quer realizar uma nova operaÃ§Ã£p?");
-    scanf("%c",&op_menu_p);
+    printf("Quer realizar uma nova operação?");
+    scanf(" %c",&resp_forne);
+    
+}while(resp_forne == 's');
 
+  
   return 0;
 }
