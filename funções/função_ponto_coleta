@@ -3,20 +3,22 @@
 
 typedef struct{
 int id;
-char ende_pc[10];
+char ende_pc[30];
 } ponto_coleta;
 
 
 
 // função de cadastro de um ponto de coleta
 void CadastroPontoColeta(ponto_coleta *lista_pontos, int i){
-    printf("Insira o id do ponto de coleta: ");
-    scanf("%d", &lista_pontos[i].id);
+  
+    lista_pontos[i].id = i;
 
     printf("insira o endereço do ponto de coleta: ");
-    scanf("%s", lista_pontos[i].ende_pc);
+    //scanf(" %s", lista_pontos[i].ende_pc);
+    scanf(" %[^\n]",lista_pontos[i].ende_pc);
    
-    i+=1;
+    printf("O id do ponto de coleta registrado será: %d", lista_pontos[i].id);
+    
 
 }
 
@@ -47,7 +49,7 @@ void MenuPontoColeta(ponto_coleta *lista_pontos, char op_aba, int i, char resp){
              
               printf("\nDeseja realizar outra operação na aba de pontos de coleta? (s)sim (n)não");
               scanf(" %c", &resp);
-
+              i+=1;
               if (resp == 's'){
                 printf("(a)Cadastrar Ponto de Coleta\n(b)Atualizar Informações\n");
                 scanf(" %c", &op_aba);
@@ -70,14 +72,7 @@ void MenuPontoColeta(ponto_coleta *lista_pontos, char op_aba, int i, char resp){
     }
 }
 
-// função que gera id para o ponto de coleta
-int id_coleta = 02000;
-void cria_id_pontocoleta(ponto_coleta *lista_pontos, int i){
-    id_coleta +=1;
 
-    lista_pontos[i].id = id_coleta;
-
-}
 
 
 int main(void) {
