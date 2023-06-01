@@ -38,10 +38,10 @@ void escreverListaFornecedores(fornecedor *lista_fornecedores, int i) {
 //Funções fornecedor
 void CadastroFornecedor(fornecedor *lista_fornecedores, int i) {
     printf("\nInsira o nome do fornecedor: ");
-    scanf(" %s",lista_fornecedores[i].nome);
+    scanf(" %[^\n]",lista_fornecedores[i].nome);
 
     printf("Insira o endereço do fornecedor: ");
-    scanf(" %s",lista_fornecedores[i].ende_forne);
+    scanf(" %[^\n]",lista_fornecedores[i].ende_forne);
 
     escreverListaFornecedores(lista_fornecedores, i);
 }
