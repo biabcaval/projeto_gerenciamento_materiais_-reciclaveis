@@ -55,6 +55,8 @@ int main(void) {
   
 //Menu Principal
 
+int p_index = 0;
+char resp = 's';
 char op_menu_p;
 char op_aba;
 printf("---Bem vindo(a) ao Sistema Ecowise---\n\n");
