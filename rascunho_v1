@@ -6,20 +6,44 @@
 #include<string.h>
 
 //Structs
-typedef struct{
-char nome[30];
-char ende_forne[50];
-} fornecedor;
+typedef struct
+{
+    int dia;
+    int mes;
+    int ano;
 
-typedef struct{
-float quanti;
-char data[10];
-} material;
+}data;
 
-typedef struct{
-int id;
-char ende_pc[10];
-} ponto_coleta;
+typedef struct
+{
+    char rua[30];
+    int num;
+    char bairro[20];
+    char estado[2];
+    
+}endereco;
+
+typedef struct
+{
+    char nome[30];
+    endereco ende_forne[50];
+
+}fornecedor;
+
+typedef struct
+{
+    float quant;
+    data data_registro;
+    
+}material;
+
+typedef struct
+{
+    int id;
+    endereco ende_pc[100];
+    
+}ponto_coleta;
+
 
 //Funções
 int MenuFornecedor(char escolha);
