@@ -12,7 +12,7 @@ Os integrantes do projeto são:
 - O foco do nosso projeto é facilitar o processamento dos materiais que irão passar pela reciclagem, armazenando dados que podem ser alterados e utilizados para análises futuras. 
 
 ## Funcionalidades do programa
-- Cadastro e atualização de informações sobre os materiais.
-- Cadastro e atualização de informações sobre os Pontos de coleta.
-- Cadastro e atualização de informações sobre os fornecedores dos materiais para reciclagem.
-- Listagem de todos os dados citados acima.
+- Cadastro e atualização de informações sobre os Materiais.
+- Cadastro e atualização de informações sobre os Pontos de Coleta.
+- Cadastro e atualização de informações sobre os Fornecedores dos Materiais para Reciclagem.
+- Listagem de todos os dados citados acima, em formato relatório.
