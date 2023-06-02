@@ -1,13 +1,14 @@
 #include<stdio.h>
 #include<string.h>
+#include<stdlib.h>
 
 typedef struct{
 int id;
 char ende_pc[30];
 } ponto_coleta;
 
+// func que cria lista com os pontos de coleta e seus ids
 
-// função que escreve lista com os pontos de coleta e suas infos
 void escreverListaPontos(ponto_coleta *lista_pontos, int i) {
     FILE *arquivo;
     arquivo = fopen("lista_pontos_coleta.txt", "a");
@@ -19,7 +20,7 @@ void escreverListaPontos(ponto_coleta *lista_pontos, int i) {
 
        // Escrever ID do ponto de coleta
     fputs("ID: ", arquivo);
-    fprintf(arquivo, "%d", i);
+    fprintf(arquivo, "%d", lista_pontos[i].id);
     // fputs(lista_pontos[i].id, arquivo);
     fputs("\n", arquivo);
 
@@ -27,6 +28,7 @@ void escreverListaPontos(ponto_coleta *lista_pontos, int i) {
     fputs("Endereço: ", arquivo);
     fputs(lista_pontos[i].ende_pc, arquivo);
     fputs("\n\n", arquivo);
+    fputs("-----------\n", arquivo);
 
     fclose(arquivo);
 }
@@ -35,8 +37,11 @@ void escreverListaPontos(ponto_coleta *lista_pontos, int i) {
 
 // função de cadastro de um ponto de coleta
 void CadastroPontoColeta(ponto_coleta *lista_pontos_coleta, int i){
+    
+    srand(time(NULL));
   
-    lista_pontos_coleta[i].id = i;
+    lista_pontos_coleta[i].id = rand(); 
+    
 
     printf("insira o endereço do ponto de coleta: ");
     
@@ -74,7 +79,7 @@ void MenuPontoColeta(ponto_coleta *lista_pontos, char op_aba, int i, char resp){
         case 'a':
               CadastroPontoColeta(lista_pontos, i);
              
-              printf("\nDeseja realizar outra operação na aba de pontos de coleta? (s)sim (n)não");
+              printf("\nDeseja realizar outra operação na aba de pontos de coleta? (s)sim (n)não: ");
               scanf(" %c", &resp);
               i+=1;
               if (resp == 's'){
@@ -88,11 +93,11 @@ void MenuPontoColeta(ponto_coleta *lista_pontos, char op_aba, int i, char resp){
 
             AtualizaPontoColeta(lista_pontos, i);
 
-            printf("\nDeseja realizar outra operação na aba de pontos de coleta? (s)sim (n)não");
+            printf("\nDeseja realizar outra operação na aba de pontos de coleta? (s)sim (n)não: ");
             scanf(" %c", &resp);
 
               if (resp == 's'){
-                printf("(a)Cadastrar Ponto de Coleta\n(b)Atualizar Informações\n");
+                printf("(a)Cadastrar Ponto de Coleta\n(b)Atualizar Informações:\n");
                 scanf(" %c", &op_aba);
                 MenuPontoColeta(lista_pontos, op_aba, i, resp);}
             break;
