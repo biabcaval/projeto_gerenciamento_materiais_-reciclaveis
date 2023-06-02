@@ -27,60 +27,32 @@ void CadastroMaterial(material *materiais, int *contador)
     printf("\nDigite a quantidade de material recebido (em kg): ");
     scanf("%d", &materiais[*contador].quant);
 
-    printf("\nDigite a data em que a coleta foi feita (DD MM AAAA): ");
+    printf("\nDigite a data em que a coleta foi feita (Escreva: DD MM AAAA): ");
     scanf("%d %d %d", &materiais[*contador].data_registro.dia, &materiais[*contador].data_registro.mes, &materiais[*contador].data_registro.ano);
 
     (*contador)++;
     
-    static char resp;
-    
-    printf("o id inserida foi: %d \n", materiais[*contador-1].id);
+    /* printf("o id inserida foi: %d \n", materiais[*contador-1].id);
     printf("a quantidade registrada foi: %d \n", materiais[*contador-1].quant);
     printf("a data que o material chegou foi: %d/%d/%d \n", materiais[*contador-1].data_registro.dia, materiais[*contador-1].data_registro.mes, materiais[*contador-1].data_registro.ano);
-    //printf("\n(s) Realizar novo cadastramento (n) Atualizar Material: ");
-    //scanf(" %c", &resp);
+    */
     
+    static char resp;
     
-}
-
-void AtualizaMaterial(material *material, int id, int contador)
-{
-    for (int j = 0; j < contador; j++)
-    {
-        if (material[j].id == id)
-        {
-            printf("Digite a nova quantidade do material: ");
-            scanf("%f", &material[j].quant);
-
-            printf("Digite a data da atualização: ");
-            scanf("%d %d %d", &material[j].data_registro.dia, &material[j].data_registro.mes, &material[j].data_registro.ano);
-        }
-    }
-    printf("Informações atualizadas com sucesso!\n");
-}
-
-void MenuMaterial(char opcao, material *materiais, int *contador)
-{
-    switch (opcao)
-    {
-    case 'a':
+    printf("\n(s) Realizar novo cadastramento? (Digite 's' para sim ou qualquer tecla para sair) \n");
+    scanf(" %c", &resp);
+    
+    if (resp == 's')
     {
         CadastroMaterial(materiais, contador);
-        break;
     }
-    case 'b':
-    {
-        int id;
-        printf("\nDigite o ID do material que você deseja atualizar: ");
-        scanf("%d", &id);
 
-        AtualizaMaterial(materiais, id, *contador);
-        break;
-    }
-    default:
-        printf("Opção inválida!\n");
+    else
+    {
+       printf("\nOperação finalizada com sucesso =D \n");
     }
 }
+
 
 int main(void)
 {
@@ -101,9 +73,7 @@ int main(void)
     {
     case 'a': // Materiais
     {
-        printf("(a)Cadastrar material\n(b)Atualizar material\n");
-        scanf(" %c", &op_aba);
-        MenuMaterial(op_aba, materiais, &contador);
+        CadastroMaterial(materiais, &contador);
         break;
     }
 
