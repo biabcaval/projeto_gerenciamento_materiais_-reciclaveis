@@ -7,17 +7,44 @@ char ende_pc[30];
 } ponto_coleta;
 
 
+// função que escreve lista com os pontos de coleta e suas infos
+void escreverListaPontos(ponto_coleta *lista_pontos, int i) {
+    FILE *arquivo;
+    arquivo = fopen("lista_pontos_coleta.txt", "a");
+
+    if (arquivo == NULL) {
+        printf("Erro ao criar o arquivo.\n");
+        return;
+    }
+
+       // Escrever ID do ponto de coleta
+    fputs("ID: ", arquivo);
+    fprintf(arquivo, "%d", i);
+    // fputs(lista_pontos[i].id, arquivo);
+    fputs("\n", arquivo);
+
+    // Escrever endereço do ponto de coleta
+    fputs("Endereço: ", arquivo);
+    fputs(lista_pontos[i].ende_pc, arquivo);
+    fputs("\n\n", arquivo);
+
+    fclose(arquivo);
+}
+
+
 
 // função de cadastro de um ponto de coleta
-void CadastroPontoColeta(ponto_coleta *lista_pontos, int i){
+void CadastroPontoColeta(ponto_coleta *lista_pontos_coleta, int i){
   
-    lista_pontos[i].id = i;
+    lista_pontos_coleta[i].id = i;
 
     printf("insira o endereço do ponto de coleta: ");
-    //scanf(" %s", lista_pontos[i].ende_pc);
-    scanf(" %[^\n]",lista_pontos[i].ende_pc);
+    
+    scanf(" %[^\n]",lista_pontos_coleta[i].ende_pc);
    
-    printf("O id do ponto de coleta registrado será: %d", lista_pontos[i].id);
+    printf("O id do ponto de coleta registrado será: %d", lista_pontos_coleta[i].id);
+    
+    escreverListaPontos(lista_pontos_coleta, i);
     
 
 }
