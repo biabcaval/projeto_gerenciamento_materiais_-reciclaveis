@@ -1,0 +1,169 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<locale.h> //necessário para usar setlocale
+#include<string.h>
+
+
+//Structs
+
+typedef struct
+{
+    int dia;
+    int mes;
+    int ano;
+
+} data;
+
+typedef struct
+{
+    int id;
+    int quant;
+    data data_registro;
+
+} material;
+typedef struct{
+    char nome[777];
+    char endereco[777];
+    material materiais[5];
+
+} fornecedor;
+
+typedef struct{
+int id;
+char ende_pc[30];
+material materiais[5];
+} ponto_coleta;
+
+
+void escreverListaPontos(ponto_coleta *lista_pontos, int i) {
+    FILE *arquivo;
+    arquivo = fopen("lista_pontos_coleta.txt", "a");
+
+    if (arquivo == NULL) {
+        printf("Erro ao criar o arquivo.\n");
+        return;
+    }
+
+       // Escrever ID do ponto de coleta
+    fputs("Nome: ", arquivo);
+    fprintf(arquivo, "%d", lista_pontos[i].id);
+    // fputs(lista_pontos[i].id, arquivo);
+    fputs("\n", arquivo);
+
+    // Escrever endereço do ponto de coleta
+    fputs("Endereço: ", arquivo);
+    fputs(lista_pontos[i].ende_pc, arquivo);
+    fputs("\n\n", arquivo);
+    fputs("-----------\n", arquivo);
+
+    
+
+    fclose(arquivo);
+}
+
+void CadastroPontoColeta(ponto_coleta *lista_pontos_coleta, int i){
+    
+    srand(time(NULL));
+  
+    lista_pontos_coleta[i].id = rand(); 
+    
+
+    printf("insira o endereço do ponto de coleta: ");
+    
+    scanf(" %[^\n]",lista_pontos_coleta[i].ende_pc);
+   
+    printf("O id do ponto de coleta registrado será: %d", lista_pontos_coleta[i].id);
+    
+    escreverListaPontos(lista_pontos_coleta, i);
+    
+
+}
+
+
+//Funções fornecedor
+void escreverListaFornecedores(fornecedor *lista_fornecedores, int i) {
+    FILE *arquivo;
+    arquivo = fopen("fornecedores.csv", "a");
+
+    if (arquivo == NULL) {
+        printf("Erro ao criar o arquivo.\n");
+        return;
+    }
+
+       // Escrever nome do fornecedor
+    fputs("Nome: ", arquivo);
+    fputs(lista_fornecedores[i].nome, arquivo);
+    fputs("\n", arquivo);
+
+    // Escrever endereço do fornecedor
+    fputs("Endereço: ", arquivo);
+    fputs(lista_fornecedores[i].endereco, arquivo);
+    fputs("\n\n", arquivo);
+
+    fclose(arquivo);
+}
+
+void CadastroFornecedor(fornecedor *lista_fornecedores, int i) {
+    printf("\nInsira o nome do fornecedor: ");
+    scanf(" %[^\n]",lista_fornecedores[i].nome);
+
+    printf("Insira o endereço do fornecedor: ");
+    scanf(" %[^\n]",lista_fornecedores[i].endereco);
+
+
+    escreverListaFornecedores(lista_fornecedores, i);
+
+    i+=1;
+}
+
+int main() {
+
+    char linha[177];
+    int t_csv = 100;
+    FILE* arquivo1;
+    int contador = 0;
+    material materiais[100];
+  
+//Menu Principal
+setlocale(LC_ALL,"Portuguese");
+int ind_forne = 0;
+int p_index = 0;
+
+ponto_coleta lista_pontos[100];
+fornecedor lista_fornecedores[100];
+char resp_forne = 's';
+char op_menu_p;
+char op_aba;
+
+do{
+printf("\n---Bem vindo(a) ao Sistema Ecowise---\n\n");
+printf("*Menu Principal*\n\n");
+printf("Selecione a aba que você quer acessar:\n\n");
+printf("(a)Fornecedores\n(b)Pontos de Coleta\n");
+
+  scanf(" %c",&op_menu_p);
+
+switch(op_menu_p)
+{
+  case 'a': //Fornecedores
+    
+    printf("\n(a)Cadastrar Fornecedor\n");
+    scanf(" %c",&op_aba);
+    
+  break;
+
+  case 'b': // Pontos de Coleta
+    printf("(a)Cadastrar Ponto de Coleta\n");
+    scanf(" %c",&op_aba);
+    
+  break;
+
+}
+    printf("\nQuer realizar uma nova operação? (s)sim (n)não:");
+    scanf(" %c",&resp_forne);
+    
+}while(resp_forne == 's');
+
+  
+  return 0;
+}
