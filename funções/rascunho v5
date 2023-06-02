@@ -14,11 +14,11 @@ typedef struct
 
 typedef struct
 {
-    int id;
     int quant;
     data data_registro;
 
 } material;
+
 typedef struct{
     char nome[777];
     char endereco[777];
@@ -33,56 +33,27 @@ material materiais[5];
 } ponto_coleta;
 
 /*
-void escreverListaPontos(ponto_coleta *lista_pontos, int i) {
-    FILE *arquivo;
-    arquivo = fopen("lista_pontos_coleta.txt", "a");
-
-    if (arquivo == NULL) {
-        printf("Erro ao criar o arquivo.\n");
-        return;
-    }
-
-       // Escrever ID do ponto de coleta
-    fputs("Nome: ", arquivo);
-    fprintf(arquivo, "%d", lista_pontos[i].id);
-    // fputs(lista_pontos[i].id, arquivo);
-    fputs("\n", arquivo);
-
-    // Escrever endereço do ponto de coleta
-    fputs("Endereço: ", arquivo);
-    fputs(lista_pontos[i].ende_pc, arquivo);
-    fputs("\n\n", arquivo);
-    fputs("-----------\n", arquivo);
-
-    
-
-    fclose(arquivo);
-}
-*/
-
-/*
 void escreverListaFornecedores(fornecedor *lista_fornecedores, int i) {
-    FILE *arquivo;
-    arquivo = fopen("fornecedores.csv", "a");
+    FILE *relatorio_pontos;
+    relatorio_pontos = fopen("fornecedores.csv", "a");
 
-    if (arquivo == NULL) {
-        printf("Erro ao criar o arquivo.\n");
+    if (relatorio_pontos == NULL) {
+        printf("Erro ao criar o relatorio_pontos.\n");
         return;
     }
 
        // Escrever nome do fornecedor
-    fputs("Nome: ", arquivo);
-    fputs(lista_fornecedores[i].nome, arquivo);
-    fputs("\n", arquivo);
+    fputs("Nome: ", relatorio_pontos);
+    fputs(lista_fornecedores[i].nome, relatorio_pontos);
+    fputs("\n", relatorio_pontos);
 
     // Escrever endereço do fornecedor
-    fputs("Endereço: ", arquivo);
-    fputs(lista_fornecedores[i].endereco, arquivo);
-    fputs("\n\n", arquivo);
+    fputs("Endereço: ", relatorio_pontos);
+    fputs(lista_fornecedores[i].endereco, relatorio_pontos);
+    fputs("\n\n", relatorio_pontos);
 
-    fclose(arquivo);
+    fclose(relatorio_pontos);
 }
-*/
 
 void CadastroFornecedor(fornecedor *lista_fornecedores, int i) {
     printf("\nInsira o nome do fornecedor: ");
@@ -96,6 +67,56 @@ void CadastroFornecedor(fornecedor *lista_fornecedores, int i) {
 
     i+=1;
 }
+*/
+
+
+
+void escreverListaPontos(ponto_coleta *lista_pontos, int i, char tipo_material, material *materiais) {
+    FILE *relatorio_pontos;
+    relatorio_pontos = fopen("lista_pontos_coleta.txt", "a");
+
+    if (relatorio_pontos == NULL) {
+        printf("Erro ao criar o relatorio_pontos.\n");
+        return;
+    }
+
+       // Escrever ID do ponto de coleta
+    fputs("ID: ", relatorio_pontos);
+    fprintf(relatorio_pontos, "%d", lista_pontos[i].id);
+    
+    fputs("\n", relatorio_pontos);
+
+    // Escrever endereço do ponto de coleta
+    fputs("Endereço: ", relatorio_pontos);
+    fputs(lista_pontos[i].ende_pc, relatorio_pontos);
+    fputs("\n", relatorio_pontos);
+    
+    switch(tipo_material){
+        case 'a':
+        fputs("Material: Papelão", relatorio_pontos);
+        break;
+        case 'b':
+        fputs("Material: Papel", relatorio_pontos);
+        break;
+        case 'c':
+        fputs("Material: Vidro", relatorio_pontos);
+        break;
+        case 'd':
+        fputs("Material: Metal", relatorio_pontos);
+        break;
+        case 'e':
+        fputs("Material: Lixo eletrônico", relatorio_pontos);
+        break;
+    }
+    
+    fprintf(relatorio_pontos, "\nQuantidade: %d kg", materiais[i].quant);
+
+    fputs("\n-----------\n", relatorio_pontos);
+
+    fclose(relatorio_pontos);
+}
+
+
 
 
 void CadastroPontoColeta(ponto_coleta *lista_pontos_coleta, int i, material *materiais){
@@ -168,10 +189,11 @@ void CadastroPontoColeta(ponto_coleta *lista_pontos_coleta, int i, material *mat
         
     }
     
+
+    escreverListaPontos(lista_pontos_coleta, i, tipo_material, materiais);
+
      (i)++;
     
-    //escreverListaPontos(lista_pontos_coleta, i);
-
 }
 
 
@@ -179,7 +201,7 @@ int main() {
 
     char linha[177];
     int t_csv = 100;
-    FILE* arquivo1;
+    FILE* relatorio_pontos1;
     int contador = 0;
     material materiais[100];
   
