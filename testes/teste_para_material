@@ -13,7 +13,7 @@ typedef struct
 typedef struct
 {
     int id;
-    float quant;
+    int quant;
     data data_registro;
 
 } material;
@@ -25,7 +25,7 @@ void CadastroMaterial(material *materiais, int *contador)
     scanf("%d", &materiais[*contador].id);
 
     printf("\nDigite a quantidade de material recebido (em kg): ");
-    scanf("%f", &materiais[*contador].quant);
+    scanf("%d", &materiais[*contador].quant);
 
     printf("\nDigite a data em que a coleta foi feita (DD MM AAAA): ");
     scanf("%d %d %d", &materiais[*contador].data_registro.dia, &materiais[*contador].data_registro.mes, &materiais[*contador].data_registro.ano);
@@ -33,10 +33,12 @@ void CadastroMaterial(material *materiais, int *contador)
     (*contador)++;
     
     static char resp;
-    static int id;
     
-    printf("\n(s) Realizar novo cadastramento (n) Atualizar Material: ");
-    scanf(" %c", &resp);
+    printf("o id inserida foi: %d \n", materiais[*contador-1].id);
+    printf("a quantidade registrada foi: %d \n", materiais[*contador-1].quant);
+    printf("a data que o material chegou foi: %d/%d/%d \n", materiais[*contador-1].data_registro.dia, materiais[*contador-1].data_registro.mes, materiais[*contador-1].data_registro.ano);
+    //printf("\n(s) Realizar novo cadastramento (n) Atualizar Material: ");
+    //scanf(" %c", &resp);
     
     
 }
@@ -92,7 +94,7 @@ int main(void)
     printf("---Bem vindo(a) ao Sistema Ecowise---\n\n");
     printf("*Menu Principal*\n\n");
     printf("Selecione a aba que você quer acessar:\n\n");
-    printf("(a)Resíduos\n(b)Fornecedores\n(c)Pontos de Coleta\n(d)Relatórios\n");
+    printf("(a)Materiais\n(b)Fornecedores\n(c)Pontos de Coleta\n(d)Relatórios\n");
     scanf(" %c", &op_menu_p);
 
     switch (op_menu_p)
