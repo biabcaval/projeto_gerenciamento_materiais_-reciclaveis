@@ -299,10 +299,12 @@ int main()
     char resp_forne = 's';
     char op_menu_p;
     char op_aba;
-    
+     
+     printf("\n---Nossas Boas Vindas ao Sistema Ecowise---\n");
+     
     do{
-        printf("\n---Nossas Boas Vindas ao Sistema Ecowise---\n\n");
-        printf("*Menu Principal*\n\n");
+       
+        printf("\n*Menu Principal*\n\n");
         printf("Selecione a origem do material que você quer cadastrar:\n\n");
         printf("(a)Fornecedores\n(b)Pontos de Coleta\n");
         
