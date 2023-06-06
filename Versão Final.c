@@ -317,7 +317,7 @@ int main()
     do{
        
         printf("\n*Menu Principal*\n\n");
-        printf("Selecione a origem do material que você quer cadastrar:\n\n");
+        printf("Selecione o menu desejado:\n\n");
         printf("(a)Fornecedores\n(b)Pontos de Coleta\n");
         
           scanf(" %c",&op_menu_p);
@@ -326,7 +326,7 @@ int main()
         {
             case 'a': //Fornecedores
             
-            printf("\n(a)Cadastrar Material em Fornecedor\n(b)Histórico de fornecedores");
+            printf("\n(a)Cadastrar Material em Fornecedor\n(b)Histórico de fornecedores\n");
             scanf(" %c",&op_aba);
             if(op_aba == 'a') CadastroFornecedor(lista_fornecedores, ind_forne, materiais);
                         
